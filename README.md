@@ -313,30 +313,3 @@ pytest -q tests/contract
 
 本项目不会为了 CI 页面“全绿”而伪造一个与真实运行环境不同的 Browser regression。完整 UI/E2E 仍在已准备好的本地或专用测试环境执行。
 
-## Repository Boundary
-
-公开仓库只发布自动化工程本身：framework、Page Objects、tests、public docs、safe example config 和 offline CI。
-
-明确不发布：
-
-- Shortlink frontend source；
-- Shortlink backend source；
-- `date/login_data.json`；
-- password / token / private config；
-- `report/`、`log/`、screenshots、cache、IDE files；
-- 私人求职材料。
-
-测试运行时只依赖已经部署好的 SUT，不依赖前后端源码目录。
-
-## 设计取舍
-
-本项目不追求“功能越多越好”。已经明确放弃或限制的内容包括：
-
-- 不为单一 SUT 在测试框架核心层增加业务特判；
-- 不通过 sleep / blind retry 掩盖同步问题；
-- 不直接访问数据库做 UI teardown；
-- 不重新加入没有稳定同步边界的 Statistics 数据断言；
-- 不为了作品集效果额外 Docker 化 SUT；
-- 不把无法在 GitHub hosted runner 上真实运行的 Browser tests 包装成假 CI。
-
-目标是让每一个保留下来的能力都能解释“为什么需要它、它解决了什么工程问题、失败时如何定位”。
