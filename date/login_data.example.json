@@ -1,0 +1,8 @@
+[
+  {
+    "username": "replace-with-valid-username",
+    "password": "replace-with-valid-password",
+    "remember": false,
+    "expected": "success"
+  }
+]
